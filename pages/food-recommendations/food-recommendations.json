@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "比格每日优选",
+  "navigationBarBackgroundColor": "#fb923c",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#fff5f0",
+  "enablePullDownRefresh": false,
+  "disableScroll": true
+} 

@@ -1,0 +1,292 @@
+/* pages/rider-leaderboard/rider-leaderboard.wxss */
+.container {
+  background-color: #FFFBF5; /* 淡奶油色背景 */
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+}
+
+.header-container {
+  padding: 40rpx;
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom: 1rpx solid #F0EAE2; /* 暖色调边框 */
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.header-title {
+  font-size: 52rpx;
+  font-weight: 700;
+  color: #5D4037; /* 深棕色文字 */
+}
+
+.edit-toggle {
+  background-color: #FFA726; /* 暖橙色 */
+  padding: 16rpx 24rpx;
+  border-radius: 20rpx;
+}
+
+.edit-text {
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.header-subtitle {
+  font-size: 28rpx;
+  color: #A1887F; /* 浅棕色文字 */
+  margin-top: 8rpx;
+}
+
+.rider-list {
+  margin: 40rpx;
+  background-color: #FFFFFF;
+  border-radius: 24rpx;
+  overflow: hidden;
+  border: 1rpx solid #F0EAE2;
+  box-shadow: 0 8rpx 20rpx rgba(93, 64, 55, 0.05);
+}
+
+.rider-card {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+}
+
+.rider-card:not(:last-child) {
+  border-bottom: 1rpx solid #F0EAE2;
+}
+
+.rider-avatar {
+  /* This class is no longer used but kept for potential future use */
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background-color: #e5e5ea;
+}
+
+.rider-info {
+  flex: 1;
+  /* margin-left: 30rpx; */ /* Removed margin */
+  display: flex;
+  flex-direction: column;
+}
+
+.rider-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #5D4037;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6rpx;
+}
+
+.rider-likes {
+  font-size: 26rpx;
+  color: #A1887F;
+  margin-bottom: 4rpx;
+}
+
+.rider-avoids {
+  font-size: 26rpx;
+  color: #A1887F;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.action-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40rpx;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  background-color: #F5F5F5;
+}
+
+.btn-hover {
+  transform: scale(1.1);
+}
+
+.avoid-btn {
+  background-color: #e5e5ea;
+  margin-right: 20rpx;
+}
+
+.avoid-btn.avoided {
+  background-color: #FF7043; /* 珊瑚橙 */
+  color: #ffffff;
+}
+
+.like-btn {
+  background-color: #e5e5ea;
+}
+
+.like-btn.liked {
+  background-color: #FFA726; /* 暖橙色 */
+  color: #ffffff;
+}
+
+.edit-stats {
+  background-color: #FFFBF5;
+  padding: 20rpx 30rpx;
+  border-top: 1rpx solid #F0EAE2;
+}
+
+.edit-stat-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.edit-stat-item:last-child {
+  margin-bottom: 0;
+}
+
+.edit-label {
+  font-size: 28rpx;
+  color: #5D4037;
+  font-weight: 500;
+  width: 120rpx;
+}
+
+.edit-input {
+  flex: 1;
+  background-color: #FFFFFF;
+  border: 1rpx solid #F0EAE2;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  font-size: 28rpx;
+  color: #5D4037;
+  margin-left: 20rpx;
+}
+
+/* --- 添加骑手按钮 --- */
+.add-rider-btn {
+  position: fixed;
+  right: 40rpx;
+  bottom: 80rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #FFA726; /* 暖橙色 */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8rpx 20rpx rgba(255, 167, 38, 0.4);
+  z-index: 10;
+}
+
+.add-icon {
+  color: #FFFFFF;
+  font-size: 60rpx;
+  font-weight: 300;
+  line-height: 100rpx;
+}
+
+/* --- 添加骑手弹窗 --- */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600rpx;
+  background-color: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  z-index: 101;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #5D4037;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.modal-input {
+  width: 100%;
+  height: 88rpx;
+  background-color: #F5F5F5;
+  border: 1rpx solid #F0EAE2;
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  margin-bottom: 40rpx;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-btn {
+  width: 48%;
+  height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel-btn {
+  background-color: #E0E0E0;
+  color: #757575;
+}
+
+.confirm-btn {
+  background-color: #FFA726;
+  color: #FFFFFF;
+}
+
+/* --- Delete Button --- */
+.delete-btn {
+  width: 52rpx;
+  height: 52rpx;
+  background-color: #FF7043; /* 珊瑚橙 */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.btn-hover-delete {
+  transform: scale(1.1);
+}
+
+.delete-icon {
+  color: #FFFFFF;
+  font-size: 36rpx;
+  font-weight: bold;
+} 

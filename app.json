@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/test-page/test-page",
+    "pages/rider-leaderboard/rider-leaderboard",
+    "pages/simple-test/simple-test",
+    "pages/logs/logs",
+    "pages/food-recommendations/food-recommendations"
+  ],
+  "window": {
+    "navigationBarTitleText": "比格美食",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#fffefa",
+    "backgroundColor": "#fcf8f2",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于为您推荐附近的美食"
+    }
+  },
+  "requiredBackgroundModes": ["location"],
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
+}

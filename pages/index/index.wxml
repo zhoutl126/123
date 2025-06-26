@@ -1,0 +1,54 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- Header -->
+  <view class="header-container">
+    <view class="header-content">
+      <text class="header-subtitle">每日精选</text>
+      <text class="header-title">比格美食</text>
+    </view>
+  </view>
+
+  <!-- Main Content -->
+  <view class="main-content">
+    <!-- Hero Section -->
+    <view class="hero-section" bindtap="goToFoodRecommendations">
+      <image class="hero-image" src="/images/beagle-with-cookies.png" mode="aspectFill"></image>
+      <view class="hero-text-content">
+        <text class="hero-title">比格每日优选</text>
+        <text class="hero-subtitle">智能机器人为您服务</text>
+      </view>
+    </view>
+
+    <!-- Navigation List -->
+    <view class="nav-list">
+      <!-- Start Conversation Card -->
+      <view class="nav-card" bindtap="goToFoodRecommendations" hover-class="nav-card-hover">
+        <view class="nav-card-icon-wrapper" style="background-color: #ffeadd;">
+          <text class="nav-card-icon">💬</text>
+        </view>
+        <view class="nav-card-text">
+          <text class="nav-card-title">开始对话</text>
+          <text class="nav-card-description">点击进入智能推荐</text>
+        </view>
+        <view class="nav-card-arrow">→</view>
+      </view>
+
+      <!-- Rider Leaderboard Card -->
+      <view class="nav-card" bindtap="goToRiderLeaderboard" hover-class="nav-card-hover">
+        <view class="nav-card-icon-wrapper" style="background-color: #fff4d4;">
+          <text class="nav-card-icon">🏆</text>
+        </view>
+        <view class="nav-card-text">
+          <text class="nav-card-title">骑手排行榜</text>
+          <text class="nav-card-description">查看本月优秀骑手</text>
+        </view>
+        <view class="nav-card-arrow">→</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Footer -->
+  <view class="footer">
+    <text class="footer-text">© 2024 比格公司</text>
+  </view>
+</view>

@@ -1,0 +1,78 @@
+<!--pages/food-recommendations/food-recommendations.wxml-->
+<view class="container">
+  <!-- 顶部标题栏 -->
+  <view class="title-bar">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="title-content">
+      <text class="chatbot-name">比格小助手</text>
+      <text class="chatbot-subtitle">智能美食推荐专家</text>
+    </view>
+    <view class="status-indicator">
+      <view class="status-dot"></view>
+      <text class="status-text">在线</text>
+    </view>
+  </view>
+
+  <!-- 聊天消息区域 -->
+  <scroll-view class="chat-container" scroll-y="true" scroll-into-view="msg-{{messages.length}}" enhanced="true" show-scrollbar="false">
+    <view class="messages">
+      <block wx:for="{{messages}}" wx:key="id">
+        <view class="message-item {{item.type === 'user' ? 'user-message' : 'bot-message'}}" id="msg-{{item.id}}">
+          <!-- 头像区域 - 只显示机器人头像 -->
+          <view wx:if="{{item.type === 'bot'}}" class="avatar-wrapper">
+            <view class="bot-avatar-container">
+              <view class="bot-avatar-frame">
+                <image class="bot-avatar-img" src="../../images/beagle-dog.png" mode="aspectFit"></image>
+              </view>
+              <view class="bot-name-tag">比格</view>
+            </view>
+          </view>
+
+          <!-- 消息内容区域 -->
+          <view class="message-content-wrapper">
+            <view class="message-bubble {{item.type === 'user' ? 'user-bubble' : 'bot-bubble'}}">
+              <view class="bubble-content">
+                <text class="message-text">{{item.content}}</text>
+              </view>
+              <view class="bubble-tail {{item.type === 'user' ? 'user-tail' : 'bot-tail'}}"></view>
+            </view>
+            <view class="message-meta">
+              <text class="message-time">{{item.time}}</text>
+              <view wx:if="{{item.type === 'bot'}}" class="message-status">
+                <text class="status-icon">✓</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <view class="input-container">
+      <view class="input-wrapper">
+        <input 
+          class="message-input" 
+          placeholder="输入消息..." 
+          placeholder-class="input-placeholder"
+          value="{{inputValue}}"
+          bindinput="onInputChange"
+          bindconfirm="sendMessage"
+          confirm-type="send"
+          maxlength="200"
+        />
+        <view class="input-actions">
+          <view class="action-btn emoji-btn">
+            <text class="action-icon">😊</text>
+          </view>
+        </view>
+      </view>
+      <view class="send-btn {{inputValue.trim() ? 'active' : ''}}" bindtap="sendMessage">
+        <text class="send-icon">发送</text>
+      </view>
+    </view>
+  </view>
+</view> 

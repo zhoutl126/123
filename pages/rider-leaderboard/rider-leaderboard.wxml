@@ -1,0 +1,73 @@
+<!--pages/rider-leaderboard/rider-leaderboard.wxml-->
+<view class="container">
+  <!-- Header -->
+  <view class="header-container">
+    <view class="header-top">
+      <text class="header-title">本月榜单</text>
+      <view class="edit-toggle" bindtap="toggleEditMode">
+        <text class="edit-text">{{isEditMode ? '完成' : '编辑'}}</text>
+      </view>
+    </view>
+    <text class="header-subtitle">为我们出色的骑手点赞</text>
+  </view>
+
+  <!-- Rider List -->
+  <view class="rider-list">
+    <block wx:for="{{riders}}" wx:key="id">
+      <view class="rider-card">
+        <!-- Delete Button (visible in edit mode) -->
+        <view wx:if="{{isEditMode}}" class="delete-btn" hover-class="btn-hover-delete" catchtap="deleteRider" data-id="{{item.id}}">
+          <text class="delete-icon">-</text>
+        </view>
+        <!-- <image class="rider-avatar" src="{{item.avatar}}" mode="aspectFill"></image> -->
+        <view class="rider-info">
+          <text class="rider-name">{{item.name}}</text>
+          <view class="stats-container">
+            <text class="rider-likes">👍 {{item.likes}} 次赞</text>
+            <text class="rider-avoids">⚠️ {{item.avoids}} 次避雷</text>
+          </view>
+        </view>
+        <view class="actions">
+          <view class="action-btn avoid-btn {{item.avoided ? 'avoided' : ''}}" hover-class="btn-hover" bindtap="handleAvoid" data-id="{{item.id}}">
+            <text>⚠️</text>
+          </view>
+          <view class="action-btn like-btn {{item.liked ? 'liked' : ''}}" hover-class="btn-hover" bindtap="handleLike" data-id="{{item.id}}">
+            <text>👍</text>
+          </view>
+        </view>
+      </view>
+      
+      <!-- Edit Mode Stats -->
+      <view class="edit-stats" wx:if="{{isEditMode}}">
+        <view class="edit-stat-item">
+          <text class="edit-label">点赞数:</text>
+          <input class="edit-input" type="number" value="{{item.likes}}" bindinput="updateLikes" data-id="{{item.id}}" />
+        </view>
+        <view class="edit-stat-item">
+          <text class="edit-label">避雷数:</text>
+          <input class="edit-input" type="number" value="{{item.avoids}}" bindinput="updateAvoids" data-id="{{item.id}}" />
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!-- 添加骑手按钮 -->
+<view class="add-rider-btn" hover-class="btn-hover" bindtap="showAddRiderModal">
+  <text class="add-icon">+</text>
+</view>
+
+<!-- 添加骑手弹窗 -->
+<view class="modal-mask" wx:if="{{showAddModal}}" bindtap="hideAddRiderModal"></view>
+<view class="modal-container" wx:if="{{showAddModal}}">
+  <view class="modal-title">添加新骑手</view>
+  <input class="modal-input" 
+         placeholder="请输入骑手姓名" 
+         value="{{newRiderName}}" 
+         bindinput="onNewRiderNameInput"
+         maxlength="10" />
+  <view class="modal-actions">
+    <button class="modal-btn cancel-btn" bindtap="hideAddRiderModal">取消</button>
+    <button class="modal-btn confirm-btn" bindtap="onAddRiderConfirm">确认添加</button>
+  </view>
+</view> 

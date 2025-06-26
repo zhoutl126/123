@@ -1,0 +1,9 @@
+<!--pages/simple-test/simple-test.wxml-->
+<view class="container">
+  <view class="content">
+    <text class="title">简单测试页面</text>
+    <text class="message">{{message}}</text>
+    <button class="test-btn" bindtap="testFunction">测试功能</button>
+    <button class="back-btn" bindtap="goBack">返回首页</button>
+  </view>
+</view> 
